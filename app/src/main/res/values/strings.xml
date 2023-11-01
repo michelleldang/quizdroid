@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">quizdroid</string>
 
-    <string name="math">This is a math description</string>
-    <string name="physics">This is a physics description</string>
-    <string name="marvel">This is a marvel description</string>
+    <string name="math">Math is numbers, numbers are fun</string>
+    <string name="physics">This topic is physics. Physics is about the science of matter, motion, and energy.</string>
+    <string name="marvel">This topic is Marvel. Marvel is a cinematic universe under Disney that hosts a variety of superheroes and villains</string>
 </resources>
