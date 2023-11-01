@@ -42,10 +42,11 @@ class AnswerActivity: AppCompatActivity() {
         } else {
             next?.text = "Next"
             next?.setOnClickListener {
-                val intent = Intent(this, QuestionActivity::class.java)
+                val intent = Intent(this, QuestionActivity::class.java).putExtra("topic", SetStat.topic)
                 startActivity(intent)
             }
         }
     }
 
 }
+

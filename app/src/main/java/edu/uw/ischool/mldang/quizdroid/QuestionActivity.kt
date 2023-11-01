@@ -27,9 +27,6 @@ class QuestionActivity: AppCompatActivity()  {
         setViews()
         SetStat.topic = intent.getStringExtra("topic").toString()
 
-        when(currentQ) {
-            1 -> questionList = null
-        }
         when(SetStat.topic) {
             "Math" -> getMathQuestions()
             "Physics" -> getPhysicsQuestions()
@@ -37,11 +34,8 @@ class QuestionActivity: AppCompatActivity()  {
         }
         setQuestions()
         submitQuestion()
-
     }
-
     private fun setViews() {
-        println("setview fun")
         questionText= findViewById(R.id.question)
         radioGroup = findViewById(R.id.radioGroup)
         radioButton1 = findViewById(R.id.radioButton1)
@@ -69,7 +63,6 @@ class QuestionActivity: AppCompatActivity()  {
     }
 
     private fun setQuestions() {
-        println("setQuestion fun")
         questionList?.let{
             val question: Question = questionList!![currentQ-1]
             println("q : $question, ql: $questionList")
