@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">quizdroid</string>
+
+    <string name="math">This is a math description</string>
+    <string name="physics">This is a physics description</string>
+    <string name="marvel">This is a marvel description</string>
+</resources>
