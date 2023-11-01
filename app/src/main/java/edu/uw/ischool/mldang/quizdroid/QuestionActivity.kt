@@ -20,17 +20,17 @@ class QuestionActivity: AppCompatActivity()  {
     private var radioButton4: RadioButton? = null
     private var answer: Int = 0
     private var submit: Button? = null
-    private var topic: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
 
         setViews()
-        topic = intent.getStringExtra("topic")
+        SetStat.topic = intent.getStringExtra("topic").toString()
+
         when(currentQ) {
             1 -> questionList = null
         }
-        when(topic) {
+        when(SetStat.topic) {
             "Math" -> getMathQuestions()
             "Physics" -> getPhysicsQuestions()
             "Marvel Super Heroes" -> getMarvelQuestions()
