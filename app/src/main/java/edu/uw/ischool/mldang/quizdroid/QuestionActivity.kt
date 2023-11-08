@@ -29,15 +29,8 @@ class QuestionActivity: AppCompatActivity()  {
         topic = intent.getSerializableExtra("topic") as? Topic
 
         if (topic != null) {
-//            SetStat.topic = topic.title
             questionList = topic!!.questions
         }
-
-//        when(SetStat.topic) {
-//            "Math" -> getMathQuestions()
-//            "Physics" -> getPhysicsQuestions()
-//            "Marvel Super Heroes" -> getMarvelQuestions()
-//        }
         setQuestions()
         submitQuestion()
     }
@@ -57,16 +50,6 @@ class QuestionActivity: AppCompatActivity()  {
             submit?.visibility = if (selected) Button.VISIBLE else Button.INVISIBLE
         }
     }
-
-//    private fun getMathQuestions() {
-//        questionList = Questions.getMathQuestions()
-//    }
-//    private fun getPhysicsQuestions() {
-//        questionList = Questions.getPhysicsQuestions()
-//    }
-//    private fun getMarvelQuestions() {
-//        questionList = Questions.getMarvelQuestions()
-//    }
 
     private fun setQuestions() {
         questionList?.let{

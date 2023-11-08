@@ -86,8 +86,3 @@ data class Topic(
     val longDescription: String,
     val questions: ArrayList<Quiz>
 ): Serializable
-//{
-//    override fun toString(): String {
-//        return title
-//    }
-//}
