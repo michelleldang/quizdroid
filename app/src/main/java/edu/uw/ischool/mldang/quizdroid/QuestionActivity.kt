@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 class QuestionActivity: AppCompatActivity()  {
 
     private var currentQ: Int = SetStat.totalAnswered + 1
-    private var questionList: ArrayList<Question>? = null
+    private var questionList: ArrayList<Quiz>? = null
     private var questionText: TextView? = null
     private var radioGroup: RadioGroup? = null
     private var radioButton1: RadioButton? = null
@@ -20,18 +20,24 @@ class QuestionActivity: AppCompatActivity()  {
     private var radioButton4: RadioButton? = null
     private var answer: Int = 0
     private var submit: Button? = null
+    private var topic: Topic? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
 
         setViews()
-        SetStat.topic = intent.getStringExtra("topic").toString()
+        topic = intent.getSerializableExtra("topic") as? Topic
 
-        when(SetStat.topic) {
-            "Math" -> getMathQuestions()
-            "Physics" -> getPhysicsQuestions()
-            "Marvel Super Heroes" -> getMarvelQuestions()
+        if (topic != null) {
+//            SetStat.topic = topic.title
+            questionList = topic!!.questions
         }
+
+//        when(SetStat.topic) {
+//            "Math" -> getMathQuestions()
+//            "Physics" -> getPhysicsQuestions()
+//            "Marvel Super Heroes" -> getMarvelQuestions()
+//        }
         setQuestions()
         submitQuestion()
     }
@@ -52,25 +58,24 @@ class QuestionActivity: AppCompatActivity()  {
         }
     }
 
-    private fun getMathQuestions() {
-        questionList = Questions.getMathQuestions()
-    }
-    private fun getPhysicsQuestions() {
-        questionList = Questions.getPhysicsQuestions()
-    }
-    private fun getMarvelQuestions() {
-        questionList = Questions.getMarvelQuestions()
-    }
+//    private fun getMathQuestions() {
+//        questionList = Questions.getMathQuestions()
+//    }
+//    private fun getPhysicsQuestions() {
+//        questionList = Questions.getPhysicsQuestions()
+//    }
+//    private fun getMarvelQuestions() {
+//        questionList = Questions.getMarvelQuestions()
+//    }
 
     private fun setQuestions() {
         questionList?.let{
-            val question: Question = questionList!![currentQ-1]
-            println("q : $question, ql: $questionList")
+            val question: Quiz = questionList!![currentQ-1]
             questionText?.text = question.question
-            radioButton1?.text = question.one
-            radioButton2?.text = question.two
-            radioButton3?.text = question.three
-            radioButton4?.text = question.four
+            radioButton1?.text = question.answerOne
+            radioButton2?.text = question.answerTwo
+            radioButton3?.text = question.answerThree
+            radioButton4?.text = question.answerFour
             answer = question.correctAnswer
         }
         when(currentQ) {
@@ -90,8 +95,9 @@ class QuestionActivity: AppCompatActivity()  {
             }
             val correctA = findViewById<RadioButton>(answerId)
                 val intent = Intent(this, AnswerActivity::class.java)
-                .putExtra("answer", radioButton.text)
-                .putExtra("correctAnswer", correctA?.text)
+                    .putExtra("answer", radioButton.text)
+                    .putExtra("correctAnswer", correctA?.text)
+                    .putExtra("topic", topic)
             startActivity(intent)
         }
     }

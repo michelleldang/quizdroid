@@ -10,9 +10,11 @@ class AnswerActivity: AppCompatActivity() {
     private var answer: String? = null
     private var correctA: String? = null
     private var next: Button? = null
+    private var topic: Topic? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_answer)
+        topic = intent.getSerializableExtra("topic") as? Topic
         setAnswers()
         nextPage()
     }
@@ -42,7 +44,7 @@ class AnswerActivity: AppCompatActivity() {
         } else {
             next?.text = "Next"
             next?.setOnClickListener {
-                val intent = Intent(this, QuestionActivity::class.java).putExtra("topic", SetStat.topic)
+                val intent = Intent(this, QuestionActivity::class.java).putExtra("topic", topic)
                 startActivity(intent)
             }
         }
