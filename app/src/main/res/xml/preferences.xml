@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="General">
+        <EditTextPreference
+            android:key="url"
+            android:title="URL"
+            android:summary="URL for question data"
+            android:dialogTitle="URL for question data"/>
+        <EditTextPreference
+            android:key="minutes"
+            android:title="Download Time in Minutes"
+            android:summary="How often to check for new downloads measured in minutes"
+            android:inputType="number"
+            android:dialogTitle="Download Time in Minutes"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -15,7 +15,7 @@ class TopicOverviewActivity: AppCompatActivity() {
         var description = findViewById<TextView>(R.id.topicDescription)
 
         if (topic != null) {
-            description.text = topic.shortDescription + "\n\n${topic.longDescription}"
+            description.text = topic.desc + "\n\nThere are ${topic.questions.size} questions in this topic."
         }
 
         val beginButton= findViewById<Button>(R.id.begin)

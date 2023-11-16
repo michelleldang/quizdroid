@@ -54,12 +54,12 @@ class QuestionActivity: AppCompatActivity()  {
     private fun setQuestions() {
         questionList?.let{
             val question: Quiz = questionList!![currentQ-1]
-            questionText?.text = question.question
-            radioButton1?.text = question.answerOne
-            radioButton2?.text = question.answerTwo
-            radioButton3?.text = question.answerThree
-            radioButton4?.text = question.answerFour
-            answer = question.correctAnswer
+            questionText?.text = question.text
+            radioButton1?.text = question.answers[0]
+            radioButton2?.text = question.answers[1]
+            radioButton3?.text = question.answers[2]
+            radioButton4?.text = question.answers[3]
+            answer = question.answer
         }
         when(currentQ) {
             1 -> SetStat.totalQuestions = questionList?.size
