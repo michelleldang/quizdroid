@@ -5,14 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 
 class MainActivity : AppCompatActivity() {
     var items: List<Topic> = mutableListOf()
+    lateinit var preferenceBtn: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        preferenceBtn = findViewById(R.id.pref_btn)
+        preferenceBtn.setOnClickListener {
+            val i = Intent(this@MainActivity, PreferencesActivity::class.java)
+            startActivity(i)
+        }
         val quizApp = (application as QuizApp)
         val repository = quizApp.topicRepository
         items = repository.getAll()

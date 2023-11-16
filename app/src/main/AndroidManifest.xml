@@ -27,6 +27,8 @@
         <activity android:name=".TopicOverviewActivity"></activity>
         <activity android:name=".QuestionActivity"></activity>
         <activity android:name=".AnswerActivity"></activity>
+        <activity android:name=".PreferencesActivity"></activity>
+
 
     </application>
 
