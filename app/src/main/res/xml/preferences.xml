@@ -4,6 +4,7 @@
             android:key="url"
             android:title="URL"
             android:summary="URL for question data"
+            android:defaultValue="https://tednewardsandbox.site44.com/questions.json"
             android:dialogTitle="URL for question data" />
         <EditTextPreference
             android:key="minutes"

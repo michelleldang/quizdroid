@@ -8,7 +8,6 @@ import com.google.gson.reflect.TypeToken
 import java.io.*
 
 
-
 class QuizApp: Application() {
     lateinit var topicRepository : TopicRepository
 
@@ -27,7 +26,7 @@ interface TopicRepository {
 class FileTopicRepository(val context: Context): TopicRepository {
     val TAG = "FileTopicRepository"
     lateinit var topics : MutableList<Topic>
-    private var downloading: Boolean = false
+
     init {
         readItems()
     }
@@ -35,24 +34,20 @@ class FileTopicRepository(val context: Context): TopicRepository {
         return topics
     }
 
+
     private fun readItems() {
         Log.v(TAG, "Calling readItems()")
         topics = mutableListOf()
 
         try {
-            if (!downloading) {
-                downloading = true
-            val reader = BufferedReader(FileReader(File(context.filesDir, "data/questions.json")))
+
+            val reader = BufferedReader(FileReader(File("/storage/emulated/0/Android/data/edu.uw.ischool.mldang.quizdroid/files/Download", "questions.json")))
             val json = reader.readText()
 
             topics = Gson().fromJson(json, object : TypeToken<List<Topic>>() {}.type)
-                downloading = false
-            } else {
-                Log.d(TAG, "Downloading")
-            }
+
 
         } catch (e: IOException) {
-            downloading = false
             Log.e(TAG, "Error while reading items", e)
         }
     }
